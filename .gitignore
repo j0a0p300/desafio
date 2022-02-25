@@ -1,0 +1,6 @@
+/.idea
+/.vscode
+/siscontrat2/uploadsdocs/*.pdf
+/uploads/*
+!/uploads/.gitkeep
+node_modules

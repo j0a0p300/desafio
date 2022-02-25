@@ -1,0 +1,15 @@
+{
+  "name": "desafio",
+  "version": "1.0.0",
+  "description": "Criamos este teste para avaliar seus conhecimentos e entendimento da estrutura dos sistemas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smcsistemasinfo/desafio.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
