@@ -29,3 +29,4 @@ Você deve criar um CRUD para os seguintes itens:
 - Estrutura e organização do código e arquivos
 - Abordagens para cada solução
 - Padrões utilizados
+

@@ -5,7 +5,7 @@ function siteURL($sistema): string
     $domainName = "{$_SERVER['HTTP_HOST']}/$sistema";
     return $protocol.$domainName;
 }
-define('SERVERURL', siteURL("cursos/"));
+define('SERVERURL', siteURL("desafio/"));
 define('PDFURL', SERVERURL."pdf/");
 define('NOMESIS', "CURSOS");
 define('SMTP', 'no.replay@teste.com');

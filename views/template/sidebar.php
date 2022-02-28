@@ -9,7 +9,7 @@
 </head>
     <!-- Brand Logo -->
     <a href="<?= SERVERURL ?>inicio" class="brand-link">
-        <img src="<?= SERVERURL ?>views/dist/img/logo.png" alt="CURSOS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="views/dist/img/SisContratLogo.png" alt="CURSOS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light"><?= NOMESIS ?></span>
     </a>
 
@@ -38,15 +38,15 @@
                 }
                 ?>
 
-                <li class="nav-header">PESSOAS</li>
+                <li class="nav-header">Módulos</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-circle"></i>
-                        <p>Usuários</p>
+                        <p>Pessoas</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?= SERVERURL?>cursos/inicio" class="nav-link">
                         <i class="fas fa-circle"></i>
                         <p>Cursos</p>
                     </a>

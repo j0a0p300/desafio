@@ -4,7 +4,9 @@ class ViewsModel
 {
     protected function verificaModulo ($mod) {
         $modulos = [
-            "inicio"
+            "inicio",
+            "cursos",
+            "pessoas"
         ];
 
         if (in_array($mod, $modulos)) {
@@ -21,7 +23,8 @@ class ViewsModel
     protected function exibirViewModel($view, $modulo = "") {
         $whitelist = [
             'inicio',
-            'logout'
+            'logout',
+            'curso_lista'
         ];
         if (self::verificaModulo($modulo)) {
             if (in_array($view, $whitelist)) {
