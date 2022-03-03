@@ -4,20 +4,19 @@
         <p>Home</p>
     </a>
 </li>
-
 <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
         <i class="far fa-circle nav-icon"></i>
         <p>
-            Curso
+            Pessoa
             <i class="right fas fa-angle-left"></i>
         </p>
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="<?= SERVERURL ?>cursos/curso_lista" class="nav-link" id="curso_lista">
+            <a href="<?= SERVERURL ?>pessoas/pessoa_lista" class="nav-link" id="pessoa_lista">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Lista de Cursos</p>
+                <p>Lista Pessoas</p>
             </a>
         </li>
     </ul>

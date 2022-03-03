@@ -24,7 +24,9 @@ class ViewsModel
         $whitelist = [
             'inicio',
             'logout',
-            'curso_lista'
+            'curso_lista',
+            'curso_cadastra',
+            'pessoa_lista'
         ];
         if (self::verificaModulo($modulo)) {
             if (in_array($view, $whitelist)) {

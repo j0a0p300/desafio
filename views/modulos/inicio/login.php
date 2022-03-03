@@ -8,8 +8,8 @@ if (isset($_POST['usuario']) && (isset($_POST['senha']))) {
 <div class="login-page">
     <div class="card">
         <div class="card-header bg-dark">
-            <a href="<?= SERVERURL ?>login" class="brand-link">
-                <img src="views/dist/img/SisContratLogo.png" alt="SisContrat Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <a href="<?= SERVERURL ?>views/modulos/inicio/inicio.php" class="brand-link">
+                <img src="<?=SERVERURL?>views/dist/img/SisContratLogo.png" alt="SisContrat Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><?= NOMESIS ?></span>
             </a>
         </div>
@@ -55,7 +55,7 @@ if (isset($_POST['usuario']) && (isset($_POST['senha']))) {
             </div>
         </div>
         <div class="card-footer bg-light-gradient text-center">
-            <img src="views/dist/img/CULTURA_HORIZONTAL_pb_positivo.png" alt="logo cultura">
+            <img src="<?=SERVERURL?>views/dist/img/CULTURA_HORIZONTAL_pb_positivo.png" alt="logo cultura">
         </div>
     </div><!-- /.card -->
 </div>
