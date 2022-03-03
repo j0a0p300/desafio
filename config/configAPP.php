@@ -1,7 +1,7 @@
 <?php
 define('SERVER', "127.0.0.1");
 
-define('DB1', "NOME_BD");
+define('DB1', "curso");
 define('USER1', "root");
 define('PASS1', "");
 

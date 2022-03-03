@@ -71,6 +71,5 @@ class UsuarioController extends UsuarioModel
     {
         return DbModel::getInfo('usuarios',$id);
     }
-
    
 }

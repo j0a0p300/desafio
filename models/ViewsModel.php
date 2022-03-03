@@ -26,7 +26,8 @@ class ViewsModel
             'logout',
             'curso_lista',
             'curso_cadastra',
-            'pessoa_lista'
+            'pessoa_lista',
+            'pessoa_cadastra'
         ];
         if (self::verificaModulo($modulo)) {
             if (in_array($view, $whitelist)) {

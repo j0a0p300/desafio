@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Cadastrar Curso</h1>
+                <h1 class="m-0">Cadastrar Pessoa</h1>
             </div>
         </div>
     </div>
@@ -14,47 +14,33 @@
             <div class="col-md-12">
                 <div class="card card-info">
                     <div class="card-header with-border">
-                        <h3 class="card-title">Curso</h3>
+                        <h3 class="card-title">Pessoa</h3>
                     </div>
-                    <form method="POST" action="curso_lista"
+                    <form method="POST" action="pessoa_lista"
                           role="form">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label for="curso">Nome</label>
-                                    <input type="text" id="nome" name="nome" class="form-control" required>
+                                    <input type="text" id="nome" name="nome" class="form-control"  required>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for="curso">Pessoa Física</label>
+                                    <label for="curso">Email</label>
                                     <input type="text" id="pf" name="pf" class="form-control" required>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for="curso">Duração(Em meses)</label>
-                                    <input type="text" id="duracao" name="duracao" class="form-control" required>
+                                    <label for="curso">Data de Nascimento</label>
+                                    <input type="date" id="duracao" name="duracao" class="form-control" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="curso">Local </label>
-                                    <select name="locais" class="form-control" data-placeholder="Selecione uma local..." required>
-                                        <option value="">Selecione...</option>
-
-                                    </select>
+                                    <label for="curso">Telefone </label>
+                                    <input type="number" id="telefone" name="telefone" class="form-control" maxlength="12" required>
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
-                                <label for="curso">Semestre </label>
-                                <select name="semestre" class="form-control" data-placeholder="Selecione uma semestre..." required>
-                                    <option value="">Selecione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-
-                                </select>
-                            </div>
                         </div>
                         <div class="card-footer">
-                            <a href="<?=SERVERURL?>cursos/curso_lista">
+                            <a href="<?=SERVERURL?>pessoas/pessoa_lista">
                                 <button type="button" class="btn btn-default">Voltar</button>
                             </a>
                             <button type="submit" name="cadastra" id="cadastra" class="btn btn-primary float-right">

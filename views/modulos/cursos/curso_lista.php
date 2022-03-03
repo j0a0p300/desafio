@@ -1,5 +1,9 @@
 <?php
+require_once "./controllers/CursoController.php";
 
+$cursoObj = new CursoController();
+
+$cursos = $cursoObj->getCurso();
 
 ?>
 
@@ -38,43 +42,36 @@
                             <thead>
                                 <tr>
                                     <th>Nome</th>
-                                    <th>Duração</th>
+                                    <th>Duração(Em meses)</th>
                                     <th>Pessoa Física</th>
                                     <th>Semestre</th>
-                                    <th>Local</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-
+                            <?php foreach ($cursos as $curso):?>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td><?=$curso->nome?></td>
+                                    <td><?=$curso->duracao?> meses</td>
+                                    <td><?=$curso->nome_pessoa?></td>
+                                    <td><?=$curso->semestre?>° Semestre</td>
                                 </tr>
-
+                            <?php endforeach;?>
                             </tbody>
 
                             <tfoot>
                                 <tr>
                                     <th>Nome</th>
-                                    <th>Duração</th>
+                                    <th>Duração(Em meses)</th>
                                     <th>Pessoa Física</th>
                                     <th>Semestre</th>
-                                    <th>Local</th>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
                     <div class="card-footer">
                         <div class="row">
-                            <div class="col-12 d-flex justify-content-start">
-                                <a href="<?=SERVERURL?>contrato/pesquisa_contratos" class="btn btn-default">
-                                    Voltar
-                                </a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
