@@ -8,7 +8,7 @@ if ($pedidoAjax) {
 
 class PessoaController extends PessoaModel
 {
-    public function getPessoa()
+    public function getPessoa($id)
     {
         $sql = "SELECT p.id, p.nome_pessoa, p.email, p.data_nascimento, p.telefone 
             FROM pessoas AS p";
@@ -27,7 +27,7 @@ class PessoaController extends PessoaModel
                 'titulo' => 'Pessoa Cadastrada!',
                 'texto' => 'Dados cadastrados com sucesso!',
                 'tipo' => 'success',
-                'location' => SERVERURL . 'pessoas/pessoa_cadastra&id=' . MainModel::encryption($pessoa_id)
+                'location' => SERVERURL . 'pessoas/pessoa_lista&id=' . MainModel::encryption($pessoa_id)
             ];
         } else {
             $alerta = [

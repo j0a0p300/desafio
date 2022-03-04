@@ -1,4 +1,10 @@
+<?php
+require_once "./controllers/CursoController.php";
+$cursoObj = new CursoController();
 
+$id = $_GET['id'] ?? null;
+$cursos = $cursoObj->getCurso($id);
+?>
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -16,51 +22,37 @@
                     <div class="card-header with-border">
                         <h3 class="card-title">Curso</h3>
                     </div>
-                    <form method="POST" action="curso_lista"
-                          role="form">
+                    <form class="form-horizontal formulario-ajax" method="POST"
+                          action="<?= SERVERURL ?>ajax/CursoAjax.php"
+                          role="form"
+                          data-form="<?= ($id) ? "update" : "save" ?>">
+                        <input type="hidden" name="_method" value="<?= ($id) ? "editarCurso" : "cadastrarCurso" ?>">
+                        <?php if ($id): ?>
+                            <input type="hidden" name="id" id="curso_id" value="<?= $id ?>">
+                        <?php endif; ?>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label for="curso">Nome</label>
                                     <input type="text" id="nome" name="nome" class="form-control" required>
                                 </div>
-                                <div class="col-md-6 form-group">
-                                    <label for="curso">Pessoa Física</label>
-                                    <input type="text" id="pf" name="pf" class="form-control" required>
-                                </div>
+
                                 <div class="col-md-6 form-group">
                                     <label for="curso">Duração(Em meses)</label>
                                     <input type="text" id="duracao" name="duracao" class="form-control" required>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="curso">Local </label>
-                                    <select name="locais" class="form-control" data-placeholder="Selecione uma local..." required>
-                                        <option value="">Selecione...</option>
-
-                                    </select>
-                                </div>
                             </div>
 
-                            <div class="col-md-2">
-                                <label for="curso">Semestre </label>
-                                <select name="semestre" class="form-control" data-placeholder="Selecione uma semestre..." required>
-                                    <option value="">Selecione...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-
-                                </select>
-                            </div>
                         </div>
                         <div class="card-footer">
                             <a href="<?=SERVERURL?>cursos/curso_lista">
                                 <button type="button" class="btn btn-default">Voltar</button>
                             </a>
-                            <button type="submit" name="cadastra" id="cadastra" class="btn btn-primary float-right">
+                            <button type="submit" name="cadastrarCurso" id="cadastrarCurso" class="btn btn-primary float-right">
                                 Cadastrar
                             </button>
                         </div>
+                        <div class="resposta-ajax"></div>
                     </form>
                 </div>
             </div>

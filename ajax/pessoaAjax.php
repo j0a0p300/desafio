@@ -8,7 +8,7 @@ if (isset($_POST['_method'])) {
     $pessoaObj = new PessoaController();
 
     switch ($_POST['_method']) {
-        case "cadastrar":
+        case "cadastrarPessoa":
             echo $pessoaObj->inserePessoa($_POST);
             break;
     }

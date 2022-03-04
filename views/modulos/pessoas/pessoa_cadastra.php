@@ -3,6 +3,7 @@ require_once "./controllers/PessoaController.php";
 $pessoaObj = new PessoaController();
 
 $id = $_GET['id'] ?? null;
+$pessoas = $pessoaObj->getPessoa($id);
 ?>
 <div class="content-header">
     <div class="container-fluid">
@@ -22,20 +23,25 @@ $id = $_GET['id'] ?? null;
                         <h3 class="card-title">Pessoa</h3>
                     </div>
                     <form class="form-horizontal formulario-ajax" method="POST"
-                          action="" role="form">
+                          action="<?= SERVERURL ?>ajax/pessoaAjax.php" role="form"
+                          data-form="<?= ($id) ? "update" : "save" ?>">
+                        <input type="hidden" name="_method" value="<?= ($id) ? "editarPessoa" : "cadastrarPessoa" ?>">
+                        <?php if ($id): ?>
+                            <input type="hidden" name="id" id="pessoa_id" value="<?= $id ?>">
+                        <?php endif; ?>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label for="curso">Nome</label>
-                                    <input type="text" id="nome" name="nome" class="form-control"  required>
+                                    <input type="text" id="nome_pessoa" name="nome_pessoa" class="form-control"  required>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="curso">Email</label>
-                                    <input type="text" id="pf" name="pf" class="form-control" required>
+                                    <input type="text" id="email" name="email" class="form-control" required>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="curso">Data de Nascimento</label>
-                                    <input type="date" id="duracao" name="duracao" class="form-control" required>
+                                    <input type="date" id="data_nascimento" name="data_nascimento" class="form-control" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="curso">Telefone </label>
@@ -52,6 +58,7 @@ $id = $_GET['id'] ?? null;
                                 Cadastrar
                             </button>
                         </div>
+                        <div class="resposta-ajax"></div>
                     </form>
                 </div>
             </div>

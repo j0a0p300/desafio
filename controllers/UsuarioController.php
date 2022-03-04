@@ -71,5 +71,81 @@ class UsuarioController extends UsuarioModel
     {
         return DbModel::getInfo('usuarios',$id);
     }
+
+    public function insereUsuario() {
+        $erro = false;
+        $dados = [];
+        $camposIgnorados = ["senha2", "_method"];
+        foreach ($_POST as $campo => $post) {
+            if (!in_array($campo, $camposIgnorados)) {
+                $dados[$campo] = MainModel::limparString($post);
+            }
+        }
+
+        $perfil_id = parent::getPerfil($dados['perfil']);
+        unset($dados['perfil']);
+
+        if ($perfil_id) {
+            $dados['perfil_id'] = $perfil_id;
+        } else {
+            $erro = true;
+            $alerta = [
+                'alerta' => 'simples',
+                'titulo' => "Erro!",
+                'texto' => "Código informado não existe no sistema",
+                'tipo' => "error"
+            ];
+        }
+
+        // Valida Senha
+        if ($_POST['senha'] != $_POST['senha2']) {
+            $erro = true;
+            $alerta = [
+                'alerta' => 'simples',
+                'titulo' => "Erro!",
+                'texto' => "As senhas inseridas não conferem. Tente novamente",
+                'tipo' => "error"
+            ];
+        }
+
+        // Valida email unique
+        $consultaEmail = DbModel::consultaSimples("SELECT email FROM usuarios WHERE email = '{$dados['email']}'");
+        if ($consultaEmail->rowCount() >= 1) {
+            $erro = true;
+            $alerta = [
+                'alerta' => 'simples',
+                'titulo' => "Erro!",
+                'texto' => "Email inserido já cadastrado. Tente novamente.",
+                'tipo' => "error"
+            ];
+        }
+
+        if (strpos($dados['usuario'],'d') === 0){
+            $dados['fiscal'] = 1;
+        }
+
+        if (!$erro) {
+            $dados['senha'] = MainModel::encryption($dados['senha']);
+            $insereUsuario = DbModel::insert('usuarios', $dados);
+            if ($insereUsuario) {
+                $usuario_id = DbModel::connection()->lastInsertId();
+                $alerta = [
+                    'alerta' => 'sucesso',
+                    'titulo' => 'Usuário Cadastrado!',
+                    'texto' => 'Usuário cadastrado com Sucesso!',
+                    'tipo' => 'success',
+                    'location' => SERVERURL
+                ];
+            } else {
+                $alerta = [
+                    'alerta' => 'simples',
+                    'titulo' => "Erro!",
+                    'texto' => "Erro ao inserir os dados no sistema. Tente novamente",
+                    'tipo' => "error"
+                ];
+            }
+        }
+        return MainModel::sweetAlert($alerta);
+    }
    
 }

@@ -3,7 +3,8 @@ require_once "./controllers/CursoController.php";
 
 $cursoObj = new CursoController();
 
-$cursos = $cursoObj->getCurso();
+$id = $_GET['id'] ?? null;
+$cursos = $cursoObj->getCurso($id);
 
 ?>
 
