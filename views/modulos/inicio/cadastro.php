@@ -8,8 +8,8 @@ $objUsuario = new UsuarioController();
 <div class="login-page">
     <div class="card">
         <div class="card-header bg-dark">
-            <a href="<?= SERVERURL?>login" class="brand-link">
-                <img src="views/dist/img/SisContratLogo.png" alt="SisContrat Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <a href="<?= SERVERURL ?>inicio" class="brand-link">
+                <img src="<?= SERVERURL ?>views/dist/img/SisContratLogo.png" alt="SisContrat Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light"><?= NOMESIS ?></span>
             </a>
         </div>
@@ -51,6 +51,9 @@ $objUsuario = new UsuarioController();
                     <div class="form-group col-md-4">
                         <label for="local">Local *</label>
                         <select class="form-control" id="local" name="local_id" required>
+                            <?php
+                            $objUsuario->geraOpcao("instituicoes");
+                            ?>
                             <!-- Populando pelo js -->
                         </select>
                     </div>
@@ -111,7 +114,7 @@ $objUsuario = new UsuarioController();
             </div>
         </div>
         <div class="card-footer bg-light-gradient text-center">
-            <img src="views/dist/img/CULTURA_HORIZONTAL_pb_positivo.png" alt="logo cultura">
+            <img src="<?= SERVERURL ?>views/dist/img/CULTURA_HORIZONTAL_pb_positivo.png" alt="logo cultura">
         </div>
     </div><!-- /.card -->
 </div>

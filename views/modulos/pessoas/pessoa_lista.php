@@ -1,6 +1,9 @@
 <?php
+require_once "./controllers/PessoaController.php";
 
+$pessoaObj = new PessoaController();
 
+$pessoas = $pessoaObj->getPessoa();
 ?>
 
 <div class="content-header">
@@ -45,22 +48,22 @@
                             </thead>
 
                             <tbody>
-
+                            <?php foreach ($pessoas as $pessoa):?>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?=$pessoa->nome_pessoa?></td>
+                                <td><?=$pessoa->email?></td>
+                                <td><?=$pessoaObj->dataParaBR($pessoa->data_nascimento)?></td>
+                                <td><?=$pessoa->telefone?></td>
                             </tr>
-
+                            <?php endforeach;?>
                             </tbody>
 
                             <tfoot>
                             <tr>
                                 <th>Nome</th>
-                                <th>Duração</th>
-                                <th>Pessoa Física</th>
-                                <th>Semestre</th>
+                                <th>Email</th>
+                                <th>Data de Nascimento</th>
+                                <th>Telefone</th>
                             </tr>
                             </tfoot>
                         </table>

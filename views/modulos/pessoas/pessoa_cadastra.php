@@ -1,4 +1,9 @@
+<?php
+require_once "./controllers/PessoaController.php";
+$pessoaObj = new PessoaController();
 
+$id = $_GET['id'] ?? null;
+?>
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -16,8 +21,8 @@
                     <div class="card-header with-border">
                         <h3 class="card-title">Pessoa</h3>
                     </div>
-                    <form method="POST" action="pessoa_lista"
-                          role="form">
+                    <form class="form-horizontal formulario-ajax" method="POST"
+                          action="" role="form">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 form-group">
@@ -43,7 +48,7 @@
                             <a href="<?=SERVERURL?>pessoas/pessoa_lista">
                                 <button type="button" class="btn btn-default">Voltar</button>
                             </a>
-                            <button type="submit" name="cadastra" id="cadastra" class="btn btn-primary float-right">
+                            <button type="submit" name="cadastrar" id="cadastrar" class="btn btn-primary float-right">
                                 Cadastrar
                             </button>
                         </div>
