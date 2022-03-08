@@ -11,6 +11,12 @@ if (isset($_POST['_method'])) {
         case "cadastrarCurso":
             echo $cursoObj->insereCurso($_POST);
             break;
+        case "apagaCurso":
+            echo $cursoObj->apagaCurso($_POST);
+            break;
+        case "editarPessoa":
+            echo $cursoObj->editaCurso($_POST);
+            break;
     }
 }else {
     include_once "../config/destroySession.php";

@@ -21,7 +21,7 @@ $objUsuario = new UsuarioController();
                 <div class="row">
                     <div class="form-group col-md-4">
                         <label for="nome">Nome Completo* </label>
-                        <input type="text" id="nome" name="nome_completo" class="form-control" required>
+                        <input type="text" id="nome" name="nome" class="form-control" required>
                         <div class="invalid-feedback">
                             <strong>Insira seu Nome Completo</strong>
                         </div>

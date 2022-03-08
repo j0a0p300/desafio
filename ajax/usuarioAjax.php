@@ -7,7 +7,7 @@ if (isset($_POST['_method'])) {
     $insUsuario = new UsuarioController();
 
     if ($_POST['_method'] == "insereNovoUsuario"){
-        if (isset($_POST['nome_completo']) && (isset($_POST['senha']))) {
+        if (isset($_POST['nome']) && (isset($_POST['senha']))) {
             echo $insUsuario->insereUsuario();
         }
     }

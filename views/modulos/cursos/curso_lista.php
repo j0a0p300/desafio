@@ -46,6 +46,8 @@ $cursos = $cursoObj->getCurso($id);
                                     <th>Duração(Em meses)</th>
                                     <th>Pessoa Física</th>
                                     <th>Semestre</th>
+                                    <th>Editar</th>
+                                    <th>Apagar</th>
                                 </tr>
                             </thead>
 
@@ -56,6 +58,22 @@ $cursos = $cursoObj->getCurso($id);
                                     <td><?=$curso->duracao?> meses</td>
                                     <td><?=$curso->nome_pessoa?></td>
                                     <td><?=$curso->semestre?>° Semestre</td>
+                                    <td>
+                                        <a href="<?= SERVERURL . "cursos/curso_cadastra&id=" . $cursoObj->encryption($curso->id) ?>"  class="btn bg-gradient-primary btn-sm">
+                                            <input type="hidden" name="_method" value="editarCurso">
+                                            <i class="fas fa-user-edit"></i> Editar
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <form class="form-horizontal formulario-ajax" method="POST" action="<?=SERVERURL?>ajax/cursoAjax.php" role="form" data-form="update">
+                                            <input type="hidden" name="_method" value="apagaCurso">
+                                            <input type="hidden" name="id" value="<?= $cursoObj->encryption($curso->id)?>">
+                                            <button type="submit" class="btn bg-gradient-danger btn-sm">
+                                                <i class="fas fa-trash"></i> Apagar
+                                            </button>
+                                            <div class="resposta-ajax"></div>
+                                        </form>
+                                    </td>
                                 </tr>
                             <?php endforeach;?>
                             </tbody>
@@ -66,6 +84,8 @@ $cursos = $cursoObj->getCurso($id);
                                     <th>Duração(Em meses)</th>
                                     <th>Pessoa Física</th>
                                     <th>Semestre</th>
+                                    <th>Editar</th>
+                                    <th>Apagar</th>
                                 </tr>
                             </tfoot>
                         </table>

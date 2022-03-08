@@ -67,4 +67,53 @@ class CursoController extends CursoModel
         }
         return MainModel::sweetAlert($alerta);
     }
+
+    public function apagaCurso($id):string
+    {
+        $id = MainModel::decryption($id);
+        $apaga = DbModel::apaga("cursos", $id);
+        if ($apaga) {
+            $alerta = [
+                'alerta' => 'sucesso',
+                'titulo' => 'Curso',
+                'texto' => 'Dados apagados com sucesso!',
+                'tipo' => 'success',
+                'location' => SERVERURL . 'cursos/curso_lista'
+            ];
+        } else {
+            $alerta = [
+                'alerta' => 'simples',
+                'titulo' => 'Oops! Algo deu Errado!',
+                'texto' => 'Falha ao apagar os dados no servidor, tente novamente mais tarde',
+                'tipo' => 'error',
+            ];
+        }
+        return MainModel::sweetAlert($alerta);
+    }
+
+    public function editaCurso(array $post):string
+    {
+        $curso_id = MainModel::decryption($post['id']);
+        unset($post['id']);
+        unset ($post['_method']);
+        $dados = MainModel::limpaPost($post);
+        $update = DbModel::update('cursos', $dados, $curso_id);
+        if ($update->rowCount() >= 1 || DbModel::connection()->errorCode() == 0) {
+            $alerta = [
+                'alerta' => 'sucesso',
+                'titulo' => 'Curso',
+                'texto' => 'Dados alterados com sucesso!',
+                'tipo' => 'success',
+                'location' => SERVERURL . 'cursos/curso_cadastra&id=' . MainModel::encryption($curso_id)
+            ];
+        } else {
+            $alerta = [
+                'alerta' => 'simples',
+                'titulo' => 'Oops! Algo deu Errado!',
+                'texto' => 'Falha ao salvar os dados no servidor, tente novamente mais tarde',
+                'tipo' => 'error',
+            ];
+        }
+        return MainModel::sweetAlert($alerta);
+    }
 }

@@ -42,7 +42,17 @@ $cursos = $cursoObj->getCurso($id);
                                     <input type="text" id="duracao" name="duracao" class="form-control" required>
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="curso">Pessoa Física</label>
+                                    <select class="form-control" name="pessoa_fisicas_id" id="instituicao" required>
+                                        <option value="">Selecione uma opção...</option>
+                                        <?php
+                                        $cursoObj->geraOpcao("pessoas");
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-footer">
                             <a href="<?=SERVERURL?>cursos/curso_lista">

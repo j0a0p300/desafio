@@ -45,6 +45,8 @@ $pessoas = $pessoaObj->getPessoa($id);
                                 <th>Email</th>
                                 <th>Data de Nascimento</th>
                                 <th>Telefone</th>
+                                <th>Editar</th>
+                                <th>Apagar</th>
                             </tr>
                             </thead>
 
@@ -55,6 +57,22 @@ $pessoas = $pessoaObj->getPessoa($id);
                                 <td><?=$pessoa->email?></td>
                                 <td><?=$pessoaObj->dataParaBR($pessoa->data_nascimento)?></td>
                                 <td><?=$pessoa->telefone?></td>
+                                <td>
+                                    <a href="<?= SERVERURL . "pessoas/pessoa_cadastra&id=" . $pessoaObj->encryption($pessoa->id) ?>"  class="btn bg-gradient-primary btn-sm">
+                                        <input type="hidden" name="_method" value="editarPessoa">
+                                        <i class="fas fa-user-edit"></i> Editar
+                                    </a>
+                                </td>
+                                <td>
+                                    <form class="form-horizontal formulario-ajax" method="POST" action="<?=SERVERURL?>ajax/pessoaAjax.php" role="form" data-form="update">
+                                        <input type="hidden" name="_method" value="apagaPessoa">
+                                        <input type="hidden" name="id" value="<?= $pessoaObj->encryption($pessoa->id)?>">
+                                        <button type="submit" class="btn bg-gradient-danger btn-sm">
+                                            <i class="fas fa-trash"></i> Apagar
+                                        </button>
+                                        <div class="resposta-ajax"></div>
+                                    </form>
+                                </td>
                             </tr>
                             <?php endforeach;?>
                             </tbody>
@@ -65,6 +83,8 @@ $pessoas = $pessoaObj->getPessoa($id);
                                 <th>Email</th>
                                 <th>Data de Nascimento</th>
                                 <th>Telefone</th>
+                                <th>Editar</th>
+                                <th>Apagar</th>
                             </tr>
                             </tfoot>
                         </table>
