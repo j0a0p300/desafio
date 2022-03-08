@@ -13,7 +13,8 @@ class CursoController extends CursoModel
         $sql = "SELECT c.id, c.nome, c.duracao, cp.semestre, p.nome_pessoa
             FROM cursos AS c
             INNER JOIN cursos_pessoas AS cp ON c.id = cp.cursos_id
-            INNER JOIN pessoas AS p ON p.id = cp.pessoa_fisicas_id";
+            INNER JOIN pessoas AS p ON p.id = cp.pessoa_fisicas_id
+            WHERE c.publicado = 1";
 
         return DbModel::consultaSimples($sql)->fetchAll(PDO::FETCH_OBJ);
     }
@@ -115,5 +116,10 @@ class CursoController extends CursoModel
             ];
         }
         return MainModel::sweetAlert($alerta);
+    }
+
+    public function recuperaCurso($id){
+        $id = MainModel::decryption($id);
+        return DbModel::getInfo('cursos', $id)->fetchObject();
     }
 }

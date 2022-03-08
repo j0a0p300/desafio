@@ -12,9 +12,9 @@ if (isset($_POST['_method'])) {
             echo $cursoObj->insereCurso($_POST);
             break;
         case "apagaCurso":
-            echo $cursoObj->apagaCurso($_POST);
+            echo $cursoObj->apagaCurso($_POST['id']);
             break;
-        case "editarPessoa":
+        case "editarCurso":
             echo $cursoObj->editaCurso($_POST);
             break;
     }

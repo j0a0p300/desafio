@@ -3,7 +3,7 @@ require_once "./controllers/CursoController.php";
 $cursoObj = new CursoController();
 
 $id = $_GET['id'] ?? null;
-$cursos = $cursoObj->getCurso($id);
+$cursos = $cursoObj->recuperaCurso($id);
 ?>
 <div class="content-header">
     <div class="container-fluid">
@@ -51,6 +51,11 @@ $cursos = $cursoObj->getCurso($id);
                                         $cursoObj->geraOpcao("pessoas");
                                         ?>
                                     </select>
+                                </div>
+
+                                <div class="col-md-1 form-group">
+                                    <label for="curso">Semestre</label>
+                                    <input type="number" id="semestre" name="semestre" class="form-control" required>
                                 </div>
                             </div>
                         </div>

@@ -59,7 +59,6 @@ $pessoas = $pessoaObj->getPessoa($id);
                                 <td><?=$pessoa->telefone?></td>
                                 <td>
                                     <a href="<?= SERVERURL . "pessoas/pessoa_cadastra&id=" . $pessoaObj->encryption($pessoa->id) ?>"  class="btn bg-gradient-primary btn-sm">
-                                        <input type="hidden" name="_method" value="editarPessoa">
                                         <i class="fas fa-user-edit"></i> Editar
                                     </a>
                                 </td>

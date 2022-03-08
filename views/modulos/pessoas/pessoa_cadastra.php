@@ -3,7 +3,8 @@ require_once "./controllers/PessoaController.php";
 $pessoaObj = new PessoaController();
 
 $id = $_GET['id'] ?? null;
-$pessoas = $pessoaObj->getPessoa($id);
+$pessoas = $pessoaObj->recuperaPessoa($id);
+
 ?>
 <div class="content-header">
     <div class="container-fluid">

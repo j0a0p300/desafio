@@ -12,10 +12,10 @@ if (isset($_POST['_method'])) {
             echo $pessoaObj->inserePessoa($_POST);
             break;
         case "apagaPessoa":
-            echo $pessoaObj->apagaPessoa($_POST);
+            echo $pessoaObj->apagaPessoa($_POST['id']);
             break;
         case "editarPessoa":
-            echo $pessoaObj->editaPessoa($_POST);
+            echo $pessoaObj->editaPessoa($_POST['id']);
             break;
     }
 }else {

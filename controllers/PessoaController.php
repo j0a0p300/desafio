@@ -11,7 +11,7 @@ class PessoaController extends PessoaModel
     public function getPessoa($id)
     {
         $sql = "SELECT p.id, p.nome_pessoa, p.email, p.data_nascimento, p.telefone 
-            FROM pessoas AS p";
+            FROM pessoas AS p WHERE p.publicado = 1";
         return DbModel::consultaSimples($sql)->fetchAll(PDO::FETCH_OBJ);
     }
 
@@ -47,7 +47,7 @@ class PessoaController extends PessoaModel
         if ($apaga) {
             $alerta = [
                 'alerta' => 'sucesso',
-                'titulo' => 'Linguagem',
+                'titulo' => 'Pessoa',
                 'texto' => 'Dados apagados com sucesso!',
                 'tipo' => 'success',
                 'location' => SERVERURL . 'pessoas/pessoa_lista'
@@ -87,5 +87,10 @@ class PessoaController extends PessoaModel
             ];
         }
         return MainModel::sweetAlert($alerta);
+    }
+
+    public function recuperaPessoa($id){
+        $id = MainModel::decryption($id);
+        return DbModel::getInfo('pessoas', $id)->fetchObject();
     }
 }
