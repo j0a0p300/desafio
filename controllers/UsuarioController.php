@@ -27,11 +27,14 @@ class UsuarioController extends UsuarioModel
         $consultaUsuario = UsuarioModel::getUsuario($dadosLogin);
 
         if ($consultaUsuario->rowCount() == 1) {
-            $usuario = $consultaUsuario->fetch(PDO::FETCH_ASSOC);
+            $usuario = $consultaUsuario->fetch();
             session_start(['name' => 'cursos']);
-            $_SESSION['login_g'] = $usuario['nome'];
-            $_SESSION['nome_g'] = $usuario['nome'];
-            $_SESSION['usuario_id_g'] = $usuario['id'];
+            $_SESSION['login_s'] = $usuario['usuario'];
+            $_SESSION['nome_s'] = $usuario['nome'];
+            $_SESSION['usuario_id_s'] = $usuario['id'];
+            $_SESSION['perfil_s'] = $usuario['perfil_id'];
+
+            MainModel::gravarLog('Fez Login');
 
             if (!$modulo) {
                 return $urlLocation = "<script> window.location='inicio/inicio' </script>";

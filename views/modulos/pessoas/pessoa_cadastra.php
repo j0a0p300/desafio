@@ -23,6 +23,7 @@ $pessoas = $pessoaObj->recuperaPessoa($id);
                     <div class="card-header with-border">
                         <h3 class="card-title">Pessoa</h3>
                     </div>
+
                     <form class="form-horizontal formulario-ajax" method="POST"
                           action="<?= SERVERURL ?>ajax/pessoaAjax.php" role="form"
                           data-form="<?= ($id) ? "update" : "save" ?>">
@@ -34,22 +35,21 @@ $pessoas = $pessoaObj->recuperaPessoa($id);
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label for="curso">Nome</label>
-                                    <input type="text" id="nome_pessoa" name="nome_pessoa" class="form-control"  required>
+                                    <input type="text" id="nome_pessoa" name="nome_pessoa" class="form-control" value="<?= $pessoas->nome_pessoa ?? "" ?>" required>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="curso">Email</label>
-                                    <input type="text" id="email" name="email" class="form-control" required>
+                                    <input type="text" id="email" name="email" class="form-control" value="<?= $pessoas->email ?? "" ?>" required>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for="curso">Data de Nascimento</label>
-                                    <input type="date" id="data_nascimento" name="data_nascimento" class="form-control" required>
+                                    <input type="date" id="data_nascimento" name="data_nascimento" class="form-control" value="<?= $pessoas->data_nascimento ?? "" ?>" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="curso">Telefone </label>
-                                    <input type="number" id="telefone" name="telefone" class="form-control" maxlength="12" required>
+                                    <input type="number" id="telefone" name="telefone" class="form-control" maxlength="12" value="<?= $pessoas->telefone ?? "" ?>" required>
                                 </div>
                             </div>
-
                         </div>
                         <div class="card-footer">
                             <a href="<?=SERVERURL?>pessoas/pessoa_lista">

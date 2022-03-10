@@ -120,6 +120,12 @@ class CursoController extends CursoModel
 
     public function recuperaCurso($id){
         $id = MainModel::decryption($id);
-        return DbModel::getInfo('cursos', $id)->fetchObject();
+        $sql = "SELECT c.id, c.nome, cp.semestre, p.nome_pessoa, c.duracao
+                FROM cursos AS c 
+                INNER JOIN cursos_pessoas AS cp ON cp.cursos_id
+                INNER JOIN pessoas AS p ON p.id = cp.pessoa_fisicas_id
+                WHERE c.id = $id GROUP BY c.id";
+        return DbModel::consultaSimples($sql)->fetchAll(PDO::FETCH_OBJ);
     }
+
 }

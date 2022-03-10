@@ -19,7 +19,7 @@ class PessoaController extends PessoaModel
     {
         unset($post['_method']);
         $dados = MainModel::limpaPost($post);
-        $insert = DbModel::insert('pessoas', $dados);
+        $insert = DbModel::insert('cursos_pessoas', $dados);
         if ($insert->rowCount() >= 1) {
             $pessoa_id = DbModel::connection()->lastInsertId();
             $alerta = [

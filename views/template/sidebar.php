@@ -29,7 +29,7 @@
                      with font-awesome or any other icon font library -->
                 <?php
                 $menuTitulo = explode("/", $_GET['views']);
-                //            echo "<li class='nav-header'>".strtoupper($menuTitulo['0'])."</li>";
+                echo "<li class='nav-header'>".strtoupper($menuTitulo['0'])."</li>";
                 $menu = $view->exibirMenuController();
                 if ($menu == 'login') {
                     include "./views/template/menuExemplo.php";
@@ -38,7 +38,6 @@
                 }
                 ?>
 
-                <li class="nav-header">Módulos</li>
                 <li class="nav-item">
                     <a href="<?=SERVERURL?>pessoas/inicio" class="nav-link">
                         <i class="fas fa-circle"></i>
